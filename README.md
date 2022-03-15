@@ -2,7 +2,7 @@
 
 # Trogdord Node.js Module
 
-The official Node.js client for trogdord.
+The official Node.js client for trogdord. This is part of the [Trogdor++](https://github.com/crankycyclops/trogdor-pp) project.
 
 ## Dependencies
 
