@@ -11,9 +11,14 @@ runTest() {
 	# Part 1: State disabled #
 	##########################
 
-	printf "[state]\nenabled=false\n" >> /usr/local/etc/trogdord/trogdord.ini
+	printf "[network]\nlisten=['127.0.0.1']\n[state]\nenabled=false\n" >> /usr/local/etc/trogdord/trogdord.ini
 
 	trogdord &
+
+	if [ $? -ne 0 ]; then
+		return 1
+	fi
+
 	TROGDORD_PID=$!
 
 	npm test
@@ -29,9 +34,14 @@ runTest() {
 	# Part 2: State enabled #
 	#########################
 
-	printf "[state]\nenabled=true\nmax_dumps_per_game=5\nsave_path=var/trogdord/state\n" >> /usr/local/etc/trogdord/trogdord.ini
+	printf "[network]\nlisten=['127.0.0.1']\n[state]\nenabled=true\nmax_dumps_per_game=5\nsave_path=var/trogdord/state\n" >> /usr/local/etc/trogdord/trogdord.ini
 
 	trogdord &
+
+	if [ $? -ne 0 ]; then
+		return 1
+	fi
+
 	TROGDORD_PID=$!
 
 	npm test
